@@ -22,6 +22,7 @@ public class CashbackHackServiceTest {
         int expected = 100;
         assertEquals(expected, actual);
     }
+
     @org.junit.Test
     public void testRemainWithCashbackAboveTheUpperLimit() {
         CashbackHackService service = new CashbackHackService();
@@ -42,6 +43,50 @@ public class CashbackHackServiceTest {
 
     @org.junit.Test
     public void testRemainWithCashbackAboveTheLowerLimit() {
+        CashbackHackService service = new CashbackHackService();
+        int amount = 1;
+        int actual = service.remain(amount);
+        int expected = 999;
+        assertEquals(expected, actual);
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testRemain2() {
+        CashbackHackService service = new CashbackHackService();
+        int amount = 1000;
+        int actual = service.remain(amount);
+        int expected = 0;
+        assertEquals(expected, actual);
+    }
+    @org.junit.jupiter.api.Test
+    public void testRemainWithCashbackBelowTheUpperLimit2() {
+        CashbackHackService service = new CashbackHackService();
+        int amount = 900;
+        int actual = service.remain(amount);
+        int expected = 100;
+        assertEquals(expected, actual);
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testRemainWithCashbackAboveTheUpperLimit2() {
+        CashbackHackService service = new CashbackHackService();
+        int amount = 1001;
+        int actual = service.remain(amount);
+        int expected = 0;
+        assertEquals(expected, actual);
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testRemainWithCashbackBottomLine2() {
+        CashbackHackService service = new CashbackHackService();
+        int amount = 0;
+        int actual = service.remain(amount);
+        int expected = 1000;
+        assertEquals(expected, actual);
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testRemainWithCashbackAboveTheLowerLimit2() {
         CashbackHackService service = new CashbackHackService();
         int amount = 1;
         int actual = service.remain(amount);
